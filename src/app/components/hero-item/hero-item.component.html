@@ -1,0 +1,26 @@
+<div [class]="isHeroVillain() ? 'hero-item hero-villain' : 'hero-item'">
+    <div class="image">
+        <img [src]="hero().image" alt="hero-item">
+    </div>
+    <div class="details">
+        <div class="hero-name">
+            {{hero().name}}
+            @if (isHeroVillain()) {
+                🦹‍♂️
+            } @else {
+                🦸‍♂️
+            }
+        </div>
+    </div>
+    @for (powerstat of hero().powerstats | keyvalue; track powerstat.key) {
+        <div class="hero-powerstats">
+            <span>{{powerstat.key | titlecase}}: {{powerstat.value}}</span>
+            <div class="hero-powerstats-buttons">
+                <button [disabled]="powerstat.value == 100"
+                (click)="incrementPowerStats(powerstat.key)">+</button>
+                <button [disabled]="powerstat.value == 0"
+                (click)="decrementPowerStats(powerstat.key)">-</button>
+            </div>
+        </div>
+    }
+</div>
