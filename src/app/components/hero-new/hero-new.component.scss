@@ -1,60 +1,48 @@
 h3 {
-    text-align: center;
+    @apply text-center;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    background-color: beige;
-    border-radius: 3px;
-    padding: 1em;
+    @apply flex flex-col bg-beige p-4;
 
     .input-group {
-        display: flex;
+        @apply flex;
     }
 
     .error {
-        color: red;
+        @apply text-red-500;
+
+        div {
+            @apply leading-3 pb-4 ml-6;
+        }
     }
 
     .input-group>label {
-        margin-right: 1em;
-        padding: .5em 0;
+        @apply mr-4 px-2 py-0;
     }
 
     label {
-        min-width: 35%;
-        font-weight: bolder;
-        font-size: 1.25rem;
+        @apply min-w-[35%] font-bold text-[1.25rem];
     }
 
     input,
     select {
-        flex: 6;
-        min-width: 65%;
-        padding: .5em;
-        margin-bottom: 1em;
+        @apply min-w-[65%] p-2 mb-4
     }
 
     button {
-        padding: 1em;
-        background: gray;
-        color: white;
-        border: 0;
-        cursor: pointer;
+        @apply bg-grey text-white border-none cursor-pointer p-4
     }
 
     fieldset {
-        border: 0;
+        @apply border-none;
     }
 }
 
 .row {
-    display: flex;
+    @apply flex
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
+    @apply flex flex-col p-[1em]
 }

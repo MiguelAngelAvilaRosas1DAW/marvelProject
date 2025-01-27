@@ -6,8 +6,7 @@ import { Hero, PowerStat } from '../../shared/interfaces/hero.interface';
 @Component({
   selector: 'app-hero-item',
   imports: [CommonModule],
-  templateUrl: './hero-item.component.html',
-  styleUrl: './hero-item.component.scss'
+  templateUrl: './hero-item.component.html'
 })
 export class HeroItemComponent {
   hero = input.required<Hero>();
