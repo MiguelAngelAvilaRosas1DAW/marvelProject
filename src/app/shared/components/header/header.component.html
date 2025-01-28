@@ -4,9 +4,9 @@
         <span class="self-center text-2xl font-semibold whitespace-nowrap">Miguel Ángel Ávila Rosas</span>
     </a>
     <ul class="flex flex-row space-x-8 font-medium">
-        <li><a class="text-gray-900" href="">Home</a></li>
-        <li><a class="text-gray-900" href="">New Hero</a></li>
-        <li><a class="text-gray-900" href="">Login</a></li>
-        <li><a class="text-gray-900" href="">Register</a></li>
+        <li><a [routerLink]="['home']" routerLinkActive="text-blue-700">Home</a></li>
+        <li><a [routerLink]="['hero','new']" routerLinkActive="text-blue-700">New Hero</a></li>
+        <li><a [routerLink]="['auth','login']" routerLinkActive="text-blue-700">Login</a></li>
+        <li><a [routerLink]="['auth','register']" routerLinkActive="text-blue-700">Register</a></li>
     </ul>
 </nav>

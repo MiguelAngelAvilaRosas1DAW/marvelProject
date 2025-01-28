@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { HeroPowerStatsChange } from '../../shared/interfaces/hero-powerstats-change-interface';
 import { Hero, PowerStat } from '../../shared/interfaces/hero.interface';
 
 @Component({
   selector: 'app-hero-item',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './hero-item.component.html'
 })
 export class HeroItemComponent {
