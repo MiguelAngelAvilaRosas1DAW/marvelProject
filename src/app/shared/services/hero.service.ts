@@ -5,6 +5,7 @@ import { Hero, PowerStat } from '../interfaces/hero.interface';
   providedIn: 'root'
 })
 export class HeroService {
+  
   public heroes: Hero[] = [
     {
       id: 620,
@@ -17,7 +18,7 @@ export class HeroService {
         power: 74,
         combat: 85
       },
-      image: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/620-spider-man.jpg',
+      image: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/620-spider-man.jpg',
       alignment: "good",
     },
     {
@@ -31,7 +32,7 @@ export class HeroService {
         power: 53,
         combat: 65
       },
-      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/225-doctor-octopus.jpg",
+      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/225-doctor-octopus.jpg",
       alignment: "bad",
     },
     {
@@ -45,21 +46,74 @@ export class HeroService {
         power: 47,
         combat: 100
       },
-      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/70-batman.jpg",
+      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/70-batman.jpg",
       alignment: "good",
     },
   ];
+
+  readonly defaultHero: Hero = {
+    id: Math.floor(Math.random() * 1000) + 10000,
+    name: 'Not Found',
+    image: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/370-joker.jpg',
+    alignment: 'bad',
+    powerstats: {
+      intelligence: 100,
+      strength: 10,
+      speed: 12,
+      durability: 60,
+      power: 43,
+      combat: 70
+    }
+  }
+
+  readonly NullHero: Hero = {
+    id: Math.floor(Math.random() * 1000) + 10000,
+    name: 'Not Found',
+    image: './assets/img/',
+    alignment: 'bad',
+    powerstats: {
+      intelligence: -1,
+      strength: -1,
+      speed: -1,
+      durability: -1,
+      power: -1,
+      combat: -1
+    }
+  }
 
   add(hero: Hero) {
     this.heroes.push(hero);
   }
 
-  update(hero: Hero, powerstat: PowerStat, value: number) {
+  updatePowerstat(hero: Hero, powerstat: PowerStat, value: number) {
     hero.powerstats[powerstat] += value;
+  }
+
+  update(heroToUpdate: Hero) {
+    this.heroes = this.heroes.map(hero => hero.id === heroToUpdate.id ? heroToUpdate : hero);
+  }
+
+  remove(hero: Hero) {
+    const index = this.heroes.findIndex((hero) => hero.id === hero.id);
+    if (index !== -1) {
+      this.heroes.splice(index, 1);
+    }
   }
 
   findAll(): Hero[] {
     return this.heroes;
+  }
+
+  findOne(id: number): Hero {
+    return this.heroes. find((hero) => hero.id === id) || this.NullHero;
+  }
+
+  isDefaultHero(hero: Hero): boolean {
+    return hero.id === this.defaultHero.id;
+  }
+
+  isNullHero(hero: Hero): boolean {
+    return hero.id === this.NullHero.id;
   }
   
 }
